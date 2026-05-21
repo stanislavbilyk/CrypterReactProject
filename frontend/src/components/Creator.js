@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
 
 import {useCountdown} from "../hooks/useCountdown";
 import AuctionList from "./AuctionList";
@@ -8,12 +7,13 @@ import price from "../img/instant-price-icon.png";
 import { Link } from "react-router-dom";
 import HotBid from "./HotBid";
 import Collection from "./Collection";
+import api from "../api";
 
 function Creator(props) {
     const [listing, setListing] = useState(null);
 
     useEffect(()=>{
-        axios.get("http://127.0.0.1:8000/api/listing/1")
+        api.get("/api/listing/1")
             .then((res) => {
                 console.log("LISTING API response:", res.data);
                 setListing(res.data)

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import axios from "axios";
+import api from "../api";
 import logoforlogin from "../img/logo-for-login.jpg"
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -16,13 +16,13 @@ function Login() {
 
     const handleLogin = async () => {
         try {
-            const res = await axios.post("http://127.0.0.1:8000/api/token/", {
+            const res = await api.post("/api/token/", {
                 username,
                 password
             })
             const token = res.data.token;
 
-            const userRes = await axios.get("http://127.0.0.1:8000/api/me/", {
+            const userRes = await api.get("/api/me/", {
                 headers: {
                     Authorization: `Token ${token}`
                 }

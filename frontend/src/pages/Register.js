@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import api from "../api";
 import logoregister from "../img/logo-register2.jpg";
 
 function Register() {
@@ -45,7 +45,7 @@ function Register() {
         if (avatar) {
           formData.append("avatar", avatar);
         }
-        axios.post("http://127.0.0.1:8000/api/register/", formData)
+        api.post("/api/register/", formData)
         .then(res => {
             console.log(res.data);
             localStorage.setItem("token", res.data.token);

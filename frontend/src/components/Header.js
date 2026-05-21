@@ -8,14 +8,20 @@ function Header(props) {
 
   const { isAuthenticated, user, logout, loading } = useAuth();
   const [open, setOpen] = useState(false);
+  const API_URL = process.env.REACT_APP_API_URL;
 
   if (loading) {
   return null; // или spinner
 }
   const getImageUrl = (path) => {
-  if (!path) return "/default-avatar.png";
-  return `http://127.0.0.1:8000${path}`;
-};
+    if (!path) return "/default-avatar.png";
+
+    if (path.startsWith("http")) {
+      return path;
+    }
+
+    return `${API_URL}${path}`;
+  };
 
   return <header className="header">
     <div className="header__inner">

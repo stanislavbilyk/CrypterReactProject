@@ -1,9 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { useParams, Link } from "react-router-dom";
-import axios from "axios";
-
-
-
+import api from "../api";
 
 
 function GenreDetail() {
@@ -12,7 +9,7 @@ function GenreDetail() {
     const [genreItems, setGenreItems] = useState([]);
 
     useEffect(() => {
-        axios.get( `http://127.0.0.1:8000/api/genre/${id}`).then((res) => {
+        api.get( `/api/genre/${id}`).then((res) => {
             setGenre(res.data);
         })
     .catch((error) => {
@@ -23,7 +20,7 @@ function GenreDetail() {
     useEffect(() => {
         const getGenreItems = async () => {
             try {
-                const items = await axios.get(`http://127.0.0.1:8000/api/genre/${id}/nftcards`);
+                const items = await api.get(`/api/genre/${id}/nftcards`);
                 setGenreItems(items.data);
                 console.log(setGenreItems)
             } catch (error) {

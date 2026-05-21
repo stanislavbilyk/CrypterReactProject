@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
+import api from "../api";
 import { Link } from "react-router-dom";
 
 
@@ -8,7 +8,7 @@ function Genre(props) {
     const [genre, setGenre] = useState([])
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/api/genre/?ordering=-created")
+        api.get("/api/genre/?ordering=-created")
             .then(res => {
                 setGenre(res.data.results)
             })

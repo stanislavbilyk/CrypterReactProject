@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
+import api from "../api";
 import { Link } from "react-router-dom";
 
 
@@ -8,7 +8,7 @@ function NftCard(props) {
     const [nftCard, setNftCard] = useState([])
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/api/nftcard/?ordering=-created")
+        api.get("/api/nftcard/?ordering=-created")
             .then(res => {
                 setNftCard(res.data)
             })

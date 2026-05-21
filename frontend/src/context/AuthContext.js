@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import axios from "axios";
+import api from "../api";
 
 // создаём контекст
 const AuthContext = createContext();
@@ -21,7 +21,7 @@ useEffect(() => {
         }
 
         try {
-            const res = await axios.get("http://127.0.0.1:8000/api/me/", {
+            const res = await api.get("/api/me/", {
                 headers: {
                     Authorization: `Token ${token}`
                 }

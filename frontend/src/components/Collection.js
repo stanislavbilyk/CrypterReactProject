@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import api from "../api";
 
 
 function Collection(props) {
     const [collection, setCollection] = useState([])
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/api/collection/?ordering=-created_at&limit=3")
+        api.get("/api/collection/?ordering=-created_at&limit=3")
             .then(res => {
                 setCollection(res.data.results)
             })

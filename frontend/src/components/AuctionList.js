@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
 import CreatorList from "./CreatorList";
 import { Link } from "react-router-dom";
+import api from "../api";
 
 
 
@@ -9,7 +9,7 @@ function AuctionList(props) {
     const[auctionList, setAuctionList] = useState([])
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/api/auction")
+        api.get("/api/auction")
             .then(res => {
                 const data = res.data.results ?? res.data
                 setAuctionList(data)

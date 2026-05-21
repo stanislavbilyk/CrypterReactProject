@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
-import axios from "axios";
+import api from "../api";
 
 
 
@@ -11,7 +11,7 @@ function CollectionDetail() {
     const [collectionItems, setCollectionItems] = useState([]);
 
     useEffect(() => {
-        axios.get( `http://127.0.0.1:8000/api/collection/${id}`).then((res) => {
+        api.get( `/api/collection/${id}`).then((res) => {
             setCollection(res.data);
         })
     .catch((error) => {
@@ -23,7 +23,7 @@ function CollectionDetail() {
     useEffect(() => {
         const getCollectionItems = async () => {
             try {
-                const items = await axios.get(`http://127.0.0.1:8000/api/collection/${id}/nftcards`);
+                const items = await api.get(`/api/collection/${id}/nftcards`);
                 setCollectionItems(items.data);
                 console.log(setCollectionItems)
             } catch (error) {

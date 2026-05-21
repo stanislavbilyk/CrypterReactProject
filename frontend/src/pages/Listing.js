@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
+import api from "../api";
 import { Link } from "react-router-dom";
 
 
@@ -8,7 +8,7 @@ function Listing(props) {
     const [listing, setListing] = useState([])
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/api/listing/?ordering=-created")
+        api.get("/api/listing/?ordering=-created")
             .then(res => {
                 setListing(res.data);
             })

@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { Link, useParams } from "react-router-dom";
-import axios from "axios";
-
+import api from "../api";
 
 
 
@@ -12,7 +11,7 @@ function ItemPage() {
     useEffect(() => {
         const getNftItem = async () => {
             try {
-                const getItem = await axios.get( `http://127.0.0.1:8000/api/nftcard/${id}`);
+                const getItem = await api.get( `/api/nftcard/${id}`);
                 setItem(getItem.data)
             } catch (error) {
                 console.error(error)

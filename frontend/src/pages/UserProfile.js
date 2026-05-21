@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import profilecover from "../img/profile-cover.png";
-import axios from "axios";
+import api from "../api";
 import { useParams } from "react-router-dom";
 import EthWalletDisplay from "../components/EthWallet";
 import { Link } from "react-router-dom";
@@ -10,7 +10,7 @@ function UserProfile({userId}) {
     const[user, setUser] = useState(null)
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/api/user/${id}`)
+        api.get(`/api/user/${id}`)
             .then((res) => {
             setUser(res.data)
             console.log(res.data)

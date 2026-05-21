@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
+import api from "../api";
 import { Link } from "react-router-dom";
 
 
@@ -8,7 +8,7 @@ function Auction(props) {
     const [auction, setAuction] = useState([])
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/api/auction/?ordering=-created")
+        api.get("/api/auction/?ordering=-created")
             .then(res => {
                 setAuction(res.data);
             })

@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import api from "../api";
 
 function CreatorList(props) {
     const[creatorList, setCreatorList] = useState([])
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/api/nftcard")
+        api.get("/api/nftcard")
             .then(res => {
                 const data = res.data.results ?? res.data
                 setCreatorList(data)

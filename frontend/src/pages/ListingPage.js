@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { Link, useParams } from "react-router-dom";
-import axios from "axios";
+import api from "../api";
 
 
 
@@ -10,7 +10,7 @@ function ListingPage() {
     const [item, setItem] = useState(null);
 
     useEffect(() => {
-        axios.get( `http://127.0.0.1:8000/api/listing/${id}`).then((res) => {
+        api.get( `/api/listing/${id}`).then((res) => {
             setItem(res.data);
         })
     .catch((error) => {

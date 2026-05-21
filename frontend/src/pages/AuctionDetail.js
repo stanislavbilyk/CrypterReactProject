@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import api from "../api";
 import {useCountdown} from "../hooks/useCountdown";
 
 
@@ -11,7 +11,7 @@ function AuctionPage() {
     const [item, setItem] = useState(null);
 
     useEffect(() => {
-        axios.get( `http://127.0.0.1:8000/api/auction/${id}`).then((res) => {
+        api.get( `/api/auction/${id}`).then((res) => {
             setItem(res.data);
         })
     .catch((error) => {

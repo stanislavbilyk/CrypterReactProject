@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
-import axios from "axios";
+import api from "../api";
 import { Link } from "react-router-dom";
 
 function Seller(props) {
     const [listing, setListing] = useState([])
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/api/listing/?ordering=-created_at&limit=5")
+        api.get("/api/listing/?ordering=-created_at&limit=5")
             .then(res => {
                 setListing(res.data)
             })
