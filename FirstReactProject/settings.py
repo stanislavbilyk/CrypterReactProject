@@ -155,6 +155,9 @@ REST_FRAMEWORK = {
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+CORS_ALLOW_CREDENTIALS = True
+
 CSRF_TRUSTED_ORIGINS = [
-    'https://crypter-react-project.vercel.app',
+    'https://vercel.app',
+    'https://railway.app'
 ]
