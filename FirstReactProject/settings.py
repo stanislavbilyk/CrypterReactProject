@@ -159,5 +159,6 @@ CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
     'https://vercel.app',
-    'https://railway.app'
+    'https://railway.app',
+    'https://crypterreactproject-production.up.railway.app',
 ]
